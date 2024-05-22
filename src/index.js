@@ -1,53 +1,89 @@
-import ApexCharts from 'apexcharts';
+// import Chart from 'chart.js/auto';
+import { fetchData } from './data.js';
 
-const renderChart = () => {
-    const options = {
-        series: [
-            {
-                name: 'Desktops',
-                data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
-            },
-        ],
-        chart: {
-            height: 350,
-            type: 'line',
-            zoom: {
-                enabled: false,
-            },
-        },
-        dataLabels: {
-            enabled: false,
-        },
-        stroke: {
-            curve: 'straight',
-        },
-        title: {
-            text: 'Product Trends by Month',
-            align: 'left',
-        },
-        grid: {
-            row: {
-                colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-                opacity: 0.5,
-            },
-        },
-        xaxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-            ],
-        },
-    };
+const ctx = document.getElementById('myChart');
 
-    const chart = new ApexCharts(document.querySelector('#chart'), options);
-    chart.render();
-};
+const aiBots = ['anthropic-ai', 'chatgpt-user', 'claudebot', 'gptbot'];
 
-renderChart();
+// const discardedBots = ['diffbot', 'cohere-ai', 'claude-web', 'machinelearning'];
+
+let dataArray = [];
+let weeklyDatesArray = [];
+
+for (const bot of aiBots) {
+    const botData = await fetchData(bot);
+    const botBanValues = botData.map((record) =>
+        parseFloat(record.bannedCount)
+    );
+    const weeklyBotBanValues = botBanValues.filter(
+        (_, index) => index % 7 === 0
+    );
+    const weeklyDates = botData
+        .filter((record, index) => index % 7 === 0)
+        .map((record) => record.date);
+
+    dataArray.push({
+        label: bot,
+        data: weeklyBotBanValues,
+        borderWidth: 1,
+    });
+
+    weeklyDatesArray.push(weeklyDates);
+}
+
+// Use the dates from the first bot as the labels for the chart
+const labels = weeklyDatesArray[0];
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: dataArray,
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'The Percent of the Top 1000 Websites Blocking AI Web Crawlers',
+                font: {
+                    family: 'Poppins',
+                    size: 20,
+                    weight: 'bold',
+                    lineHeight: 1.2,
+                },
+            },
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: '% of Top 2000',
+                    font: {
+                        family: 'Poppins',
+                        size: 20,
+                        weight: 'bold',
+                        lineHeight: 1.2,
+                    },
+                },
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date',
+                    font: {
+                        family: 'Poppins',
+                        size: 20,
+                        weight: 'bold',
+                        lineHeight: 1.2,
+                    },
+                },
+            },
+        },
+        responsive: true,
+        interaction: {
+            mode: 'index',
+            intersect: false,
+        },
+    },
+});
