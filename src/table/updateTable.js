@@ -14,7 +14,7 @@ export function updateTable(data) {
                     </tr>`;
 
     let parts = latestData.date.split('-');
-    let formattedDateStr = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    let formattedDateStr = `${parts[2]}-${parts[1]}-${parts[0]}T00:00:00`;
     let date = new Date(formattedDateStr);
     let formattedDate = date.toLocaleDateString('en-US', {
         year: 'numeric',
