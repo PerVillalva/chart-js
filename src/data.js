@@ -9,9 +9,11 @@ const sortDataByDate = (data) => {
 
 // Data Functions
 export const fetchData = async (botName) => {
-    const response = await axios.get(
-        `https://api.apify.com/v2/key-value-stores/GyQJDcUHMA2zWjd8B/records/${botName}`
-    );
+    const response = await axios({
+        url: `https://api.apify.com/v2/key-value-stores/GyQJDcUHMA2zWjd8B/records/${botName}`,
+        method: 'GET',
+        mode: 'no-cors',
+    });
 
     const records = response.data.records;
     const sortedRecords = sortDataByDate(records);
