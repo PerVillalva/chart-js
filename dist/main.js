@@ -24,9 +24,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/***/ ((__webpack_module__, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.js */ \"./src/data.js\");\n/* harmony import */ var _table_updateTable_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./table/updateTable.js */ \"./src/table/updateTable.js\");\n/* harmony import */ var _table_websitesTable_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./table/websitesTable.js */ \"./src/table/websitesTable.js\");\n\n\n\n\nconst ctx = document.getElementById('bot-chart');\n\nconst aiBots = ['anthropic-ai', 'chatgpt-user', 'claudebot', 'gptbot'];\n\n// Clear the table body\nconst tableBody = document.getElementById('bots-table');\ntableBody.innerHTML = '';\n\nlet dataArray = [];\nlet weeklyDatesArray = [];\n\nfor (const bot of aiBots) {\n    const botData = await (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.fetchData)(bot);\n    (0,_table_updateTable_js__WEBPACK_IMPORTED_MODULE_1__.updateTable)(botData);\n    const botBanValues = botData.map((record) =>\n        parseFloat(record.bannedPercentage)\n    );\n    const weeklyBotBanValues = botBanValues.filter(\n        (_, index) => index % 7 === 0\n    );\n    const weeklyDates = botData\n        .filter((record, index) => index % 7 === 0)\n        .map((record) => record.date);\n\n    dataArray.push({\n        label: bot,\n        data: weeklyBotBanValues,\n        borderWidth: 1,\n    });\n\n    weeklyDatesArray.push(weeklyDates);\n}\n\n// Use the dates from the first bot as the labels for the chart\nconst labels = weeklyDatesArray[0];\n\nnew Chart(ctx, {\n    type: 'line',\n    data: {\n        labels: labels,\n        datasets: dataArray,\n    },\n    options: {\n        plugins: {\n            title: {\n                display: true,\n                text: 'The Percent of the Top 2000 CZ/SK Websites Blocking AI Web Crawlers',\n                font: {\n                    family: 'Trebuchet MS, sans-serif',\n                    size: 18,\n                    weight: 'bold',\n                    lineHeight: 1.2,\n                },\n            },\n        },\n        scales: {\n            y: {\n                beginAtZero: true,\n                title: {\n                    display: true,\n                    text: '% of Top 2000',\n                    font: {\n                        family: 'Trebuchet MS, sans-serif',\n                        size: 18,\n                        weight: 'bold',\n                        lineHeight: 1.2,\n                    },\n                },\n            },\n            x: {\n                title: {\n                    display: true,\n                    text: 'Date',\n                    font: {\n                        family: 'Trebuchet MS, sans-serif',\n                        size: 20,\n                        weight: 'bold',\n                        lineHeight: 1.2,\n                    },\n                },\n            },\n        },\n        responsive: true,\n        interaction: {\n            mode: 'index',\n            intersect: false,\n        },\n    },\n});\n\nlet botStatsTable = new DataTable('#bots', {\n    paging: false,\n    searching: false,\n    info: false,\n});\n\nconst aiBotsFull = [\n    'anthropic-ai',\n    'chatgpt-user',\n    'claudebot',\n    'gptbot',\n    'diffbot',\n    'cohere-ai',\n    'claude-web',\n    'machinelearning',\n];\n\nfor (let i = 0; i < aiBotsFull.length; i++) {\n    const botData = await (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.fetchData)(aiBotsFull[i]);\n    (0,_table_websitesTable_js__WEBPACK_IMPORTED_MODULE_2__.updateWebsitesTable)(botData, i, aiBotsFull);\n}\n\nlet websitesTable = new DataTable('#websites', { info: false });\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } }, 1);\n\n//# sourceURL=webpack://canvas/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _data_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data.js */ \"./src/data.js\");\n/* harmony import */ var _table_updateTable_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./table/updateTable.js */ \"./src/table/updateTable.js\");\n/* harmony import */ var _table_websitesTable_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./table/websitesTable.js */ \"./src/table/websitesTable.js\");\n\n\n\n\nwindow.onload = async function () {\n    const ctx = document.getElementById('bot-chart');\n\n    const aiBots = ['anthropic-ai', 'chatgpt-user', 'claudebot', 'gptbot'];\n\n    // Clear the table body\n    const tableBody = document.getElementById('bots-table');\n    tableBody.innerHTML = '';\n\n    let dataArray = [];\n    let weeklyDatesArray = [];\n\n    for (const bot of aiBots) {\n        const botData = await (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.fetchData)(bot);\n        (0,_table_updateTable_js__WEBPACK_IMPORTED_MODULE_1__.updateTable)(botData);\n        const botBanValues = botData.map((record) =>\n            parseFloat(record.bannedPercentage)\n        );\n        const weeklyBotBanValues = botBanValues.filter(\n            (_, index) => index % 7 === 0\n        );\n        const weeklyDates = botData\n            .filter((record, index) => index % 7 === 0)\n            .map((record) => record.date);\n\n        dataArray.push({\n            label: bot,\n            data: weeklyBotBanValues,\n            borderWidth: 1,\n        });\n\n        weeklyDatesArray.push(weeklyDates);\n    }\n\n    // Use the dates from the first bot as the labels for the chart\n    const labels = weeklyDatesArray[0];\n\n    new Chart(ctx, {\n        type: 'line',\n        data: {\n            labels: labels,\n            datasets: dataArray,\n        },\n        options: {\n            plugins: {\n                title: {\n                    display: true,\n                    text: 'The Percent of the Top 2000 CZ/SK Websites Blocking AI Web Crawlers',\n                    font: {\n                        family: 'Trebuchet MS, sans-serif',\n                        size: 18,\n                        weight: 'bold',\n                        lineHeight: 1.2,\n                    },\n                },\n            },\n            scales: {\n                y: {\n                    beginAtZero: true,\n                    title: {\n                        display: true,\n                        text: '% of Top 2000',\n                        font: {\n                            family: 'Trebuchet MS, sans-serif',\n                            size: 18,\n                            weight: 'bold',\n                            lineHeight: 1.2,\n                        },\n                    },\n                },\n                x: {\n                    title: {\n                        display: true,\n                        text: 'Date',\n                        font: {\n                            family: 'Trebuchet MS, sans-serif',\n                            size: 20,\n                            weight: 'bold',\n                            lineHeight: 1.2,\n                        },\n                    },\n                },\n            },\n            responsive: true,\n            interaction: {\n                mode: 'index',\n                intersect: false,\n            },\n        },\n    });\n\n    let botStatsTable = new DataTable('#bots', {\n        paging: false,\n        searching: false,\n        info: false,\n    });\n\n    const aiBotsFull = [\n        'anthropic-ai',\n        'chatgpt-user',\n        'claudebot',\n        'gptbot',\n        'diffbot',\n        'cohere-ai',\n        'claude-web',\n        'machinelearning',\n    ];\n\n    for (let i = 0; i < aiBotsFull.length; i++) {\n        const botData = await (0,_data_js__WEBPACK_IMPORTED_MODULE_0__.fetchData)(aiBotsFull[i]);\n        (0,_table_websitesTable_js__WEBPACK_IMPORTED_MODULE_2__.updateWebsitesTable)(botData, i, aiBotsFull);\n    }\n\n    let websitesTable = new DataTable('#websites', { info: false });\n};\n\n\n//# sourceURL=webpack://canvas/./src/index.js?");
 
 /***/ }),
 
@@ -87,75 +87,6 @@ eval("module.exports = /*#__PURE__*/JSON.parse('{\"domains\":[\"seznam.cz\",\"ak
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/async module */
-/******/ 	(() => {
-/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
-/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
-/******/ 		var resolveQueue = (queue) => {
-/******/ 			if(queue && queue.d < 1) {
-/******/ 				queue.d = 1;
-/******/ 				queue.forEach((fn) => (fn.r--));
-/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
-/******/ 			}
-/******/ 		}
-/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
-/******/ 			if(dep !== null && typeof dep === "object") {
-/******/ 				if(dep[webpackQueues]) return dep;
-/******/ 				if(dep.then) {
-/******/ 					var queue = [];
-/******/ 					queue.d = 0;
-/******/ 					dep.then((r) => {
-/******/ 						obj[webpackExports] = r;
-/******/ 						resolveQueue(queue);
-/******/ 					}, (e) => {
-/******/ 						obj[webpackError] = e;
-/******/ 						resolveQueue(queue);
-/******/ 					});
-/******/ 					var obj = {};
-/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
-/******/ 					return obj;
-/******/ 				}
-/******/ 			}
-/******/ 			var ret = {};
-/******/ 			ret[webpackQueues] = x => {};
-/******/ 			ret[webpackExports] = dep;
-/******/ 			return ret;
-/******/ 		}));
-/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
-/******/ 			var queue;
-/******/ 			hasAwait && ((queue = []).d = -1);
-/******/ 			var depQueues = new Set();
-/******/ 			var exports = module.exports;
-/******/ 			var currentDeps;
-/******/ 			var outerResolve;
-/******/ 			var reject;
-/******/ 			var promise = new Promise((resolve, rej) => {
-/******/ 				reject = rej;
-/******/ 				outerResolve = resolve;
-/******/ 			});
-/******/ 			promise[webpackExports] = exports;
-/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
-/******/ 			module.exports = promise;
-/******/ 			body((deps) => {
-/******/ 				currentDeps = wrapDeps(deps);
-/******/ 				var fn;
-/******/ 				var getResult = () => (currentDeps.map((d) => {
-/******/ 					if(d[webpackError]) throw d[webpackError];
-/******/ 					return d[webpackExports];
-/******/ 				}))
-/******/ 				var promise = new Promise((resolve) => {
-/******/ 					fn = () => (resolve(getResult));
-/******/ 					fn.r = 0;
-/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
-/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
-/******/ 				});
-/******/ 				return fn.r ? promise : getResult();
-/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
-/******/ 			queue && queue.d < 0 && (queue.d = 0);
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
