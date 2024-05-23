@@ -1,5 +1,5 @@
 export function updateTable(data) {
-    const latestData = data.pop();
+    const latestData = data[data.length - 1];
 
     const tableBody = document.getElementById('bots-table');
     const tableTitle = document.getElementById('table-title');
@@ -21,8 +21,10 @@ export function updateTable(data) {
         month: 'long',
         day: 'numeric',
     });
-
-    tableTitle.innerHTML = `The latest data for ${formattedDate}`;
+    if (tableTitle) {
+        tableTitle.innerHTML = '';
+        tableTitle.innerHTML = `The latest data for ${formattedDate}`;
+    }
 
     tableBody.innerHTML += row;
 }
