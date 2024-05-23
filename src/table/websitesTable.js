@@ -27,9 +27,9 @@ export function updateWebsitesTable(data, botIndex) {
 
         // Add the class to the cell
         if (status === 'Allowed') {
-            cell.classList.add('has-text-success');
+            cell.style.color = '#23d160';
         } else {
-            cell.classList.add('has-text-danger');
+            cell.style.color = '#ff3860';
         }
     }
 }
