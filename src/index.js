@@ -9,7 +9,9 @@ window.onload = async function () {
 
     // Clear the table body
     const tableBody = document.getElementById('bots-table');
-    tableBody.innerHTML = '';
+    if (tableBody) {
+        tableBody.innerHTML = '';
+    }
 
     let dataArray = [];
     let weeklyDatesArray = [];
