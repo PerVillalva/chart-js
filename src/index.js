@@ -19,7 +19,6 @@ window.onload = async function () {
     for (const bot of aiBots) {
         const botData = await fetchData(bot);
         updateTable(botData);
-        console.log(botData);
         const botBanValues = botData.map((record) =>
             parseFloat(record.bannedPercentage)
         );
@@ -35,8 +34,6 @@ window.onload = async function () {
             data: weeklyBotBanValues,
             borderWidth: 1,
         });
-
-        console.log(weeklyDates);
 
         weeklyDatesArray.push(weeklyDates);
     }
