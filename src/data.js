@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 // Util functions
 const sortDataByDate = (data) => {
     return data.sort((a, b) => {

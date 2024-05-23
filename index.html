@@ -4,9 +4,61 @@
         <title>Chart.js example</title>
     </head>
     <body>
-        <div style="width: 800px; margin: auto">
-            <canvas id="myChart"></canvas>
+        <div style="width: 1200px; margin: auto">
+            <canvas id="bot-chart" style="margin: 4rem 0"></canvas>
+
+            <p id="table-title"></p>
+            <table
+                id="bots"
+                class="table is-striped is-hoverable"
+                style="width: 100%"
+            >
+                <thead>
+                    <tr>
+                        <th>Bot</th>
+                        <th>Blocked (CZ)</th>
+                        <th>Blocked (SK)</th>
+                        <th>Blocked (Total)</th>
+                        <th>% (Total)</th>
+                    </tr>
+                </thead>
+                <tbody id="bots-table"></tbody>
+            </table>
+
+            <p id="websites-table-title"></p>
+            <table
+                id="websites"
+                class="table is-striped is-hoverable"
+                style="width: 100%; margin: 4rem 0""
+            >
+                <thead>
+                    <tr>
+                        <th class="has-text-grey">Position</th>
+                        <th class="has-text-grey">Websites</th>
+                        <th class="has-text-grey">anthropic-ai</th>
+                        <th class="has-text-grey">chatgpt-user</th>
+                        <th class="has-text-grey">claudebot</th>
+                        <th class="has-text-grey">gptbot</th>
+                        <th class="has-text-grey">diffbot</th>
+                        <th class="has-text-grey">cohere-ai</th>
+                        <th class="has-text-grey">claude-web</th>
+                        <th class="has-text-grey">machinelearning</th>
+                    </tr>
+                </thead>
+                <tbody id="websites-table"></tbody>
+            </table>
         </div>
+
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.datatables.net/v/bm/jq-3.7.0/dt-2.0.7/datatables.min.css"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.datatables.net/v/bm/jq-3.7.0/dt-2.0.7/datatables.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
