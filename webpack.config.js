@@ -10,5 +10,5 @@ export default {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    mode: 'development', // Use 'production' for production environment
+    mode: 'production', // Use 'production' for production environment
 };
