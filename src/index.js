@@ -49,6 +49,7 @@ window.onload = async function () {
         },
         options: {
             plugins: {
+                maintainAspectRatio: false,
                 title: {
                     display: true,
                     text: 'The Percent of the Top 2000 CZ/SK Websites Blocking AI Web Crawlers',

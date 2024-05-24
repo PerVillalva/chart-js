@@ -10,10 +10,15 @@
     </head>
     <body>
         <div style="width: 1200px; margin: auto">
-            <canvas id="bot-chart" style="margin: 4rem 0"></canvas>
+            <div
+                class="chart-container"
+                style="position: relative; height: 40vh; width: 80vw"
+            >
+                <canvas id="bot-chart" style="margin: 4rem 0"></canvas>
+            </div>
 
-            <p id="table-title"></p>
             <table id="bots" class="display" style="width: 100%">
+                <caption id="table-title" style="text-align: left"></caption>
                 <thead>
                     <tr>
                         <th>Bot</th>
