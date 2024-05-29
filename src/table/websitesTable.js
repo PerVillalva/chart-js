@@ -1,35 +1,45 @@
 import domains from './domains.json' with { type: 'json' };
+import { getMostFrequentCategory } from './processCategories.js';
 
+// Util Functions
+const capitalizeFirstLetter = string => string.charAt(0).toUpperCase() + string.slice(1);
+
+const formatDomain = domain => domain.toLowerCase().trim().replace('www.', '').replace('https://', '');
+
+const createRow = (index, domain, category) => {
+    const row = document.createElement('tr');
+    row.dataset.domain = domain;
+    row.innerHTML = `<td>${index + 1}</td><td>${domain}</td><td>${category}</td>`;
+    return row;
+};
+
+const updateCell = (row, botIndex, status) => {
+    const cellIndex = botIndex + 3;
+    const cell = row.children[cellIndex] || row.insertCell(cellIndex);
+    cell.textContent = status;
+    cell.style.color = status === 'Allowed' ? '#23d160' : '#ff3860';
+};
+
+// Main Function
 export function updateWebsitesTable(data, botIndex) {
     const latestData = data.pop();
     const tableBody = document.getElementById('websites-table');
-    const domainsArray = domains.domains.map(website => 
-        website.toLowerCase().trim().replace('www.', '').replace('https://', ''));
+    
+    const formattedData = domains.domains.map((item) => {
+        const categories = Object.values(item.categories);
+        let category = getMostFrequentCategory(categories);
+        category = category ? capitalizeFirstLetter(category.split('(')[0].trim()) : 'Unknown';
+        return {
+            domain: formatDomain(item.domain),
+            category: category
+        };
+    });
 
-    for (let i = 0; i < domainsArray.length; i++) {
-        let row = tableBody.querySelector(
-            `tr[data-domain="${domainsArray[i]}"]`
-        );
+    formattedData.forEach((item, i) => {
+        let row = tableBody.querySelector(`tr[data-domain="${item.domain}"]`) || createRow(i, item.domain, item.category);
+        if (!tableBody.contains(row)) tableBody.appendChild(row);
 
-        if (!row) {
-            row = document.createElement('tr');
-            row.dataset.domain = domainsArray[i];
-            row.innerHTML = `<td>${i + 1}</td><td>${domainsArray[i]}</td>`;
-            tableBody.appendChild(row);
-        }
-
-        const status =
-            latestData && latestData.bannedSites.includes(domainsArray[i])
-                ? 'Blocked'
-                : 'Allowed';
-        const cell = row.children[botIndex + 2] || row.insertCell();
-        cell.textContent = status;
-
-        // Add the class to the cell
-        if (status === 'Allowed') {
-            cell.style.color = '#23d160';
-        } else {
-            cell.style.color = '#ff3860';
-        }
-    }
-}
+        const status = latestData && latestData.bannedSites.includes(item.domain) ? 'Blocked' : 'Allowed';
+        updateCell(row, botIndex, status);
+    });
+};

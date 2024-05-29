@@ -49,6 +49,7 @@ window.onload = async function () {
         },
         options: {
             plugins: {
+                responsive: true,
                 maintainAspectRatio: false,
                 title: {
                     display: true,
