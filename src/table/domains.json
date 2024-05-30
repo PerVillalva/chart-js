@@ -1060,8 +1060,7 @@
             "categories": {
                 "Sophos": "entertainment",
                 "BitDefender": "news",
-                "Forcepoint ThreatSeeker": "news and media",
-                "Dr.Web": "adult content"
+                "Forcepoint ThreatSeeker": "news and media"
             }
         },
         {
@@ -1351,10 +1350,8 @@
             "domain": "aukro.cz",
             "categories": {
                 "BitDefender": "onlineshop",
-                "Xcitium Verdict Cloud": "computing & technology",
                 "Sophos": "online shopping",
-                "Forcepoint ThreatSeeker": "internet auctions",
-                "Dr.Web": "adult content"
+                "Forcepoint ThreatSeeker": "internet auctions"
             }
         },
         {
@@ -2231,7 +2228,6 @@
             "categories": {
                 "BitDefender": "porn",
                 "Forcepoint ThreatSeeker": "adult content",
-                "Xcitium Verdict Cloud": "media sharing",
                 "Dr.Web": "adult content"
             }
         },
@@ -2941,9 +2937,6 @@
             "url": "https://www.virustotal.com/gui/domain/gotobrno.cz/details",
             "domain": "gotobrno.cz",
             "categories": {
-                "BitDefender": "alcohol",
-                "Xcitium Verdict Cloud": "media sharing",
-                "Forcepoint ThreatSeeker": "entertainment",
                 "alphaMountain.ai": "Entertainment, Travel"
             }
         },
@@ -3002,8 +2995,7 @@
             "categories": {
                 "Xcitium Verdict Cloud": "shopping",
                 "Sophos": "online shopping",
-                "Forcepoint ThreatSeeker": "lingerie and swimsuit",
-                "Dr.Web": "adult content"
+                "Forcepoint ThreatSeeker": "lingerie and swimsuit"
             }
         },
         {
@@ -3562,10 +3554,7 @@
             "url": "https://www.virustotal.com/gui/domain/naj.sk/details",
             "domain": "naj.sk",
             "categories": {
-                "BitDefender": "porn",
-                "Xcitium Verdict Cloud": "shopping",
-                "Forcepoint ThreatSeeker": "web hosting",
-                "Dr.Web": "adult content"
+                "Xcitium Verdict Cloud": "shopping"
             }
         },
         {
@@ -5240,8 +5229,7 @@
                 "Sophos": "information technology",
                 "BitDefender": "hosting",
                 "Xcitium Verdict Cloud": "software-hardware",
-                "Forcepoint ThreatSeeker": "web hosting",
-                "Dr.Web": "adult content"
+                "Forcepoint ThreatSeeker": "web hosting"
             }
         },
         {
@@ -5409,8 +5397,7 @@
                 "Sophos": "reference",
                 "BitDefender": "searchengines",
                 "Xcitium Verdict Cloud": "streaming media",
-                "Forcepoint ThreatSeeker": "search engines and portals",
-                "Dr.Web": "adult content"
+                "Forcepoint ThreatSeeker": "search engines and portals"
             }
         },
         {
@@ -5671,8 +5658,7 @@
             "url": "https://www.virustotal.com/gui/domain/www.lesy.sk/details",
             "domain": "www.lesy.sk",
             "categories": {
-                "Forcepoint ThreatSeeker": "government",
-                "BitDefender": "alcohol"
+                "Forcepoint ThreatSeeker": "government"
             }
         },
         {
@@ -8117,11 +8103,7 @@
             "url": "https://www.virustotal.com/gui/domain/hyperlink.cz/details",
             "domain": "hyperlink.cz",
             "categories": {
-                "BitDefender": "porn",
-                "Xcitium Verdict Cloud": "media sharing",
-                "Forcepoint ThreatSeeker": "search engines and portals",
-                "alphaMountain.ai": "Hosting, Information Technology",
-                "Dr.Web": "adult content"
+                "alphaMountain.ai": "Hosting, Information Technology"
             }
         },
         {
@@ -8155,8 +8137,6 @@
             "url": "https://www.virustotal.com/gui/domain/dobryandel.cz/details",
             "domain": "dobryandel.cz",
             "categories": {
-                "BitDefender": "religion",
-                "Xcitium Verdict Cloud": "content server",
                 "Forcepoint ThreatSeeker": "service and philanthropic organizations",
                 "alphaMountain.ai": "Non-Profit/Advocacy"
             }
@@ -10382,7 +10362,6 @@
             "url": "https://www.virustotal.com/gui/domain/proverenaspolecnost.cz/details",
             "domain": "proverenaspolecnost.cz",
             "categories": {
-                "Xcitium Verdict Cloud": "unknown",
                 "Forcepoint ThreatSeeker": "business and economy"
             }
         },
@@ -10456,8 +10435,7 @@
             "url": "https://www.virustotal.com/gui/domain/ktopomozeukrajine.sk/details",
             "domain": "ktopomozeukrajine.sk",
             "categories": {
-                "BitDefender": "blogs",
-                "Xcitium Verdict Cloud": "unknown"
+                "BitDefender": "non-profits"
             }
         },
         {
@@ -10546,8 +10524,6 @@
             "url": "https://www.virustotal.com/gui/domain/cero.sk/details",
             "domain": "cero.sk",
             "categories": {
-                "BitDefender": "ads",
-                "Xcitium Verdict Cloud": "unknown",
                 "Forcepoint ThreatSeeker": "business and economy"
             }
         },
@@ -10556,7 +10532,6 @@
             "domain": "sexposta.sk",
             "categories": {
                 "BitDefender": "sextoys",
-                "Xcitium Verdict Cloud": "game playing & game media",
                 "Forcepoint ThreatSeeker": "sex"
             }
         },
@@ -10572,7 +10547,7 @@
         {
             "url": "https://www.virustotal.com/gui/domain/grandiosoft.sk/details",
             "domain": "grandiosoft.sk",
-            "categories": {}
+            "categories": { "Xcitium Verdict Cloud": "computing & technology" }
         },
         {
             "url": "https://www.virustotal.com/gui/domain/sewa.sk/details",
@@ -10587,7 +10562,7 @@
             "url": "https://www.virustotal.com/gui/domain/wikimedia.cz/details",
             "domain": "wikimedia.cz",
             "categories": {
-                "alphaMountain.ai": "Unrated"
+                "alphaMountain.ai": "Education"
             }
         },
         {
@@ -10599,7 +10574,6 @@
             "url": "https://www.virustotal.com/gui/domain/shoptec.sk/details",
             "domain": "shoptec.sk",
             "categories": {
-                "Forcepoint ThreatSeeker": "web analytics",
                 "alphaMountain.ai": "Business/Economy"
             }
         },
@@ -10700,8 +10674,7 @@
             "url": "https://www.virustotal.com/gui/domain/pomocpreukrajinu.sk/details",
             "domain": "pomocpreukrajinu.sk",
             "categories": {
-                "Xcitium Verdict Cloud": "unknown",
-                "Forcepoint ThreatSeeker": "travel"
+                "Xcitium Verdict Cloud": "government"
             }
         },
         {
@@ -10918,8 +10891,7 @@
             "url": "https://www.virustotal.com/gui/domain/cekit.cz/details",
             "domain": "cekit.cz",
             "categories": {
-                "Forcepoint ThreatSeeker": "business and economy",
-                "Xcitium Verdict Cloud": "unknown"
+                "Forcepoint ThreatSeeker": "business and economy"
             }
         },
         {
@@ -10965,7 +10937,6 @@
             "url": "https://www.virustotal.com/gui/domain/shopsun.cz/details",
             "domain": "shopsun.cz",
             "categories": {
-                "Xcitium Verdict Cloud": "unknown",
                 "Forcepoint ThreatSeeker": "shopping"
             }
         },
@@ -11216,9 +11187,7 @@
             "domain": "azcomputers.cz",
             "categories": {
                 "Webroot": "Malware Sites",
-                "Xcitium Verdict Cloud": "unknown",
-                "Forcepoint ThreatSeeker": "information technology",
-                "alphaMountain.ai": "Suspicious (alphaMountain.ai)"
+                "Forcepoint ThreatSeeker": "information technology"
             }
         },
         {
@@ -11351,8 +11320,7 @@
             "url": "https://www.virustotal.com/gui/domain/supersaas.sk/details",
             "domain": "supersaas.sk",
             "categories": {
-                "BitDefender": "misc",
-                "Xcitium Verdict Cloud": "unknown"
+                "Xcitium Verdict Cloud": "business and economy"
             }
         },
         {
@@ -11652,7 +11620,6 @@
             "domain": "dobraobec.sk",
             "categories": {
                 "Forcepoint ThreatSeeker": "business and economy",
-                "Xcitium Verdict Cloud": "unknown",
                 "alphaMountain.ai": "Business/Economy"
             }
         },
@@ -12168,9 +12135,7 @@
             "url": "https://www.virustotal.com/gui/domain/hlavnizpravy.cz/details",
             "domain": "hlavnizpravy.cz",
             "categories": {
-                "Xcitium Verdict Cloud": "unknown",
-                "Forcepoint ThreatSeeker": "advertisements",
-                "alphaMountain.ai": "Business/Economy"
+                "Xcitium Verdict Cloud": "news"
             }
         },
         {
@@ -12473,7 +12438,7 @@
             "url": "https://www.virustotal.com/gui/domain/amis.sk/details",
             "domain": "amis.sk",
             "categories": {
-                "alphaMountain.ai": "Sex Education (alphaMountain.ai)"
+                "alphaMountain.ai": "marketing"
             }
         },
         {
@@ -12505,7 +12470,7 @@
             "url": "https://www.virustotal.com/gui/domain/ibetonovazumpa.sk/details",
             "domain": "ibetonovazumpa.sk",
             "categories": {
-                "Comodo Valkyrie Verdict": "unknown"
+                "Comodo Valkyrie Verdict": "business and economy"
             }
         },
         {
@@ -13777,7 +13742,6 @@
             "domain": "dennikn.sk",
             "categories": {
                 "BitDefender": "blogs",
-                "Xcitium Verdict Cloud": "alcohol & tobacco",
                 "Sophos": "news",
                 "Forcepoint ThreatSeeker": "news and media"
             }
@@ -14843,8 +14807,7 @@
             "url": "https://www.virustotal.com/gui/domain/rabbitstudio.sk/details",
             "domain": "rabbitstudio.sk",
             "categories": {
-                "Xcitium Verdict Cloud": "alcohol & tobacco",
-                "Forcepoint ThreatSeeker": "media file download"
+                "Forcepoint ThreatSeeker": "marketing"
             }
         },
         {

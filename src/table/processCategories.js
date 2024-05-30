@@ -10,7 +10,9 @@ export function getMostFrequentCategory(categories, similarityThreshold = 0.5) {
 
     // Filter out "unknown" categories
     let filteredCategories = Object.values(categories).filter(
-        (category) => category.toLowerCase() !== 'unknown'
+        (category) =>
+            category.toLowerCase() !== 'unknown' &&
+            category.toLowerCase() !== 'tasteless & offensive'
     );
 
     for (let category1 of filteredCategories) {
