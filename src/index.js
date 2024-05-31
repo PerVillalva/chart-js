@@ -1,6 +1,11 @@
 import { fetchData } from './data.js';
-import { updateTable } from './table/updateTable.js';
-import { updateWebsitesTable } from './table/websitesTable.js';
+import { updateTable } from './tables/updateTable.js';
+import {
+    updateWebsitesTable,
+    blockedCategorizedItems,
+    numberOfWebsitesPerCategory,
+} from './tables/websitesTable.js';
+import { updateCategoriesTable } from './tables/categoriesTable.js';
 
 window.onload = async function () {
     const ctx = document.getElementById('bot-chart');
@@ -120,4 +125,8 @@ window.onload = async function () {
     }
 
     let websitesTable = new DataTable('#websites', { info: false });
+
+    updateCategoriesTable(blockedCategorizedItems, numberOfWebsitesPerCategory);
+
+    let categoriesTable = new DataTable('#categories', { info: false });
 };

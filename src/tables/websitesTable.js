@@ -5,37 +5,37 @@ function simplifyCategory(category) {
     const categoryMap = new Map([
         [/entertainment|games|media sharing|video hosting|radiomusic|arts & society & culture/i, "Entertainment"],
         [/shopping|online shopping|auctions and classified ads|onlineshop|internet auctions/i, "Online Shopping"],
-        [/finance|financial|financial services|finance & investment|financial data and services/i, "Business/Economy & Employment"],
+        [/finance|financial|financial services|finance & investment|financial data and services/i, "Finance"],
         [/gambling/i, "Entertainment"],
         [/news|tabloids|news and media/i, "News & Media"],
         [/information technology|computersandsoftware|computing & technology|information security|software-hardware|web infrastructure|application and software download/i, "Technology & Software"],
         [/government|legal|government & legal|military|political organization/i, "Government/Legal"],
-        [/business|economy|marketing|marketing & merchandising|professional and worker organizations/i, "Business/Economy & Employment"],
-        [/society|lifestyle|fashion & beauty|human interests|advice|social and affiliation organizations|society and culture/i, "Society/Lifestyle & Health"],
+        [/business|economy|marketing|marketing & merchandising|professional and worker organizations/i, "Business/Economy"],
+        [/society|lifestyle|fashion & beauty|human interests|advice|social and affiliation organizations|society and culture/i, "Society/Lifestyle"],
         [/misc|unknown|unrated|parked|parked sites/i, "Other"],
-        [/health|health & medicine|pharmacy|narcoticsgeneral/i, "Society/Lifestyle & Health"],
-        [/travel|food & dining|restaurants and dining/i, "Society/Lifestyle & Health"],
-        [/real estate|realestate/i, "Business/Economy & Employment"],
+        [/health|health & medicine|pharmacy|narcoticsgeneral/i, "Health"],
+        [/travel|food & dining|restaurants and dining/i, "Society/Lifestyle"],
+        [/real estate|realestate/i, "Business/Economy"],
         [/search engines|searchengines|search engines & portals|portals/i, "Search Engines & Portals"],
-        [/vehicles|motor vehicles|auto/i, "Society/Lifestyle & Health"],
-        [/job search|jobsearch/i, "Business/Economy & Employment"],
-        [/online services|web applications|webmail|personal network storage/i, "Technology & Software"],
+        [/vehicles|motor vehicles|auto/i, "Business/Economy"],
+        [/job search|jobsearch/i, "Job Search"],
+        [/online services|web applications|webmail|personal network storage|online services/i, "Online Services"],
         [/education|educational institutions|education & reference/i, "Education & Culture"],
-        [/sports/i, "Society/Lifestyle & Health"],
-        [/hobbies|hobbies\/recreation|recreation|occult|astrology/i, "Society/Lifestyle & Health"],
+        [/sports/i, "Society/Lifestyle"],
+        [/hobbies|hobbies\/recreation|recreation|occult|astrology/i, "Society/Lifestyle"],
         [/blogs|forums|message boards and forums|blogs and forums|forums & newsgroups|blogs & wikis|blogs and personal sites/, "Blogs and Forums"],
-        [/food/, "Society/Lifestyle & Health"],
-        [/alcohol|tobacco|alcohol & tobacco/, "Alcohol & Tobacco"],
+        [/food/, "Society/Lifestyle"],
+        [/alcohol|tobacco|alcohol & tobacco|marijuana/, "Recreational Drugs"],
         [/adult content|porn|sextoys/, "Adult Content"],
         [/non-profits|ngos and non profits|non-profit\/advocacy/i, "NGOs and Non-Profits"],
         [/service and philanthropic organizations/i, "NGOs and Non-Profits"],
         [/religion|traditional religions|religion and spirituality/, "Religion"],
         [/dynamic dns and isp sites/i, "Technology & Software"],
-        [/content server/i, "Society/Lifestyle & Health"],
+        [/content server/i, "Society/Lifestyle"],
         [/social networks|social networking|social web - facebook/i, "Social Networks"],
         [/ads|advertisements|ads\/analytics/i, "Technology & Software"],
         [/web analytics|pay-to-surf/i, "Technology & Software"],
-        [/hosting|web hosting/, "Technology & Software"],
+        [/hosting|web hosting/, "Online Services"],
         [/illegal software|piracy|malware sites/i, "Technology & Software"],
         [/reference|reference materials|technical information/, "Education & Culture"],
         [/cultural institutions/, "Education & Culture"],
@@ -71,7 +71,10 @@ const updateCell = (row, botIndex, status) => {
     cell.style.color = status === 'Allowed' ? '#23d160' : '#ff3860';
 };
 
-let uniqueCategories = new Set();
+export const blockedCategorizedItems = [];
+
+let countedWebsites = new Set();
+export const numberOfWebsitesPerCategory = {};
 
 // Main Function
 export function updateWebsitesTable(data, botIndex) {
@@ -82,8 +85,7 @@ export function updateWebsitesTable(data, botIndex) {
         const categories = Object.values(item.categories);
         let category = getMostFrequentCategory(categories);
         category = category ? capitalizeFirstLetter(category.split('(')[0].trim()) : 'Other';
-        category = simplifyCategory(category);
-        uniqueCategories.add(category);
+        category = simplifyCategory(category);  
         return {
             domain: formatDomain(item.domain),
             category: category
@@ -95,7 +97,24 @@ export function updateWebsitesTable(data, botIndex) {
         if (!tableBody.contains(row)) tableBody.appendChild(row);
 
         const status = latestData && latestData.bannedSites.includes(item.domain) ? 'Blocked' : 'Allowed';
+
+        // Increment the count for the category if the website has not been counted before
+        if (!countedWebsites.has(item.domain)) {
+            numberOfWebsitesPerCategory[item.category] = (numberOfWebsitesPerCategory[item.category] || 0) + 1;
+            countedWebsites.add(item.domain);
+        }
+
+        if (status === 'Blocked') {
+            const blockedFormattedItem = {
+                ...item,
+                category: item.category,
+                country: item.domain.endsWith('.cz') ? 'CZ' : 'SK',
+                date: latestData.date,
+            }
+
+            blockedCategorizedItems.push(blockedFormattedItem);
+        }
+
         updateCell(row, botIndex, status);
     });
-    console.log(uniqueCategories)
 };
